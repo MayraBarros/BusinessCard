@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,96 +6,248 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url(./img/gif.space.gif);
-    /* background-size: cover; */
-    min-height: 100vh;
-    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url(./img/gif.space.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+
 }
 
+/* Estilos de cajas */
+
 .box {
-    position: relative;
     width: 400px;
     height: 300px;
-    /* background-color: black; */
-    border-radius: 20px;
-    background: transparent
-    
+    position: relative;
+    display: grid;
+    grid-column: 3 / 6;
+    grid-row: 5 / 9;
+    background-color: transparent;
 }
 
 .box .front,
 .box .back {
-    width: 400px;
-    height: 300px;
-    border: 1.5px solid #753188;
+    width: 100%;
+    height: 100%;
+    border: 0.1px solid rgb(250, 71, 250);
+    box-shadow: 0px 0px 20px rgb(248, 148, 248);
     border-radius: 20px;
+    grid-column: 3 / 6;
+    grid-row: 4 / 6;
+    color: #fff;
     position: absolute;
+    transition: transform .2s;
+    /* background-color: chartreuse; */
+    
+}
+
+
+.box .back{
+    transform: rotateX(-180deg);
     backface-visibility: hidden;
-    transition: transform .4s;
-    background-color: #000000;
 }
 
-/* Estilos texto caja frente */
+/* Estilos de texto */
 
-.box .front .t1{
-    position: relative;
-    color: #ffff;
-    text-align: center;
-    top: 45%;
-
-}
-
-.box .front .p1{
-    position: relative;
+.front .t1 {
     color: #fff;
     text-align: center;
-    top: 47%;
+    padding-top: 9rem;
+}
+
+.front .p1 {
+    color: #fff;
+    text-align: center;
+    padding-top: 1rem;
 }
 
 .box .back {
-    display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
-    flex-direction: column;
-    transform: rotateX(-180deg);
+    padding: 4em 3em;
     margin: auto;
+    transition: transform .2s;
+}
+    
+
+.back .t2 {
+    padding-bottom: 1rem;
 }
 
-/* Estilos de texto caja back */
-
-.box .back .t2{
-    padding: 3em 3em 1.3em 3em;
-    color: #ffF;
-
+.back .p2 {
+    padding: .8rem;
+    width: 100%;
+    white-space: nowrap;
 }
 
-.box .back .p2{
-    padding: 2em;
-    color: #fff;
-    margin: 0;
-    padding: .2em 1em 1em 4.3em;
+.cyan{
+    color: rgb(5, 209, 209);
 }
 
-.yellow {
-    color: #FF5F7E;
-}
-
-.blue {
-    color: #f75998;
+.violet {
+    color: rgb(250, 71, 250);
 }
 
 
-.box:hover .front {
-    transform: rotateX(180deg);
+@media only screen and (max-width: 480px) {
+    
+    body{
+        max-height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        background-size: cover;
+        background-repeat: repeat;
+    }
+    
+    .box {
+        width: 270px;
+        height: 180px;
+        grid-column: 2 / 4;
+        grid-row: 2 / 6;
+        margin: auto;
+    }
+
+    .box .front,
+    .box .back {
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .front .t1 {
+        padding: 4.5rem 1rem 1rem 1rem;
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    .front .p1 {
+        padding-top: .5rem;
+        font-size: .8em;
+    }
+
+    .back .t2 {
+        font-size: 1rem;
+        padding-top: .9rem;
+        padding-left: 1rem;
+    }
+
+    .back .p2 {
+        font-size: .7rem;
+        padding-left: 1rem;
+        
+    }
 }
 
-.box:hover .back{
-    transform: rotateX(0deg);
-    /* background-image: linear-gradient(to left bottom, #CB69C1, #6c72cb); */
+@media  screen and (min-width: 484px) and (max-width: 767px) {
+    body{
+        max-height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        background-size: cover;
+        background-repeat: repeat;
+    }
+    
+    .box {
+        width: 400px;
+        height: 250px;
+        grid-column: 1;
+        grid-row: 4 / 6;
+        margin: auto;
+    }
+
+    .box .back {
+        padding: 0;
+    }
+
+    .front .t1 {
+        padding: 6rem 1rem 1rem 1rem;
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .front .p1 {
+        padding: 1rem 2rem;
+        font-size: 1.3rem;
+    }
+
+    .back .t2 {
+        font-size: 1.5rem;
+        padding: 1.5rem 1rem 1rem 2rem;
+        
+    }
+
+    .back .p2 {
+        font-size: 1rem;
+        padding-left: 3rem;
+        white-space: pre-line;
+        
+    }
 }
 
+@media  screen and (min-width: 768px) and (max-width: 1023px) {
 
+    body{
+        max-height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        background-size: cover;
+        background-repeat: repeat;
+    }
 
+    .box {
+        width: 400px;
+        height: 250px;
+        grid-column: 3 / 5;
+        grid-row: 4 / 6;
+        margin: auto;
+    }
+
+    .box .front,
+    .box .back {
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .front .t1 {
+        padding: 7rem 1rem 1rem 1rem;
+        margin: 0;
+        font-size: 1.7rem;
+    }
+
+    .front .p1 {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        white-space:pre-wrap;
+    }
+
+    .back .t2 {
+        font-size: 1.2rem;
+        padding-top: 2rem;
+        padding-left: 2rem;
+    }
+
+    .back .p2 {
+        font-size: 1rem;
+        white-space: pre-line;
+        padding-left: 4rem;
+    }
+
+    /* .box:hover .front {
+        transform: rotateX(180deg);
+        backface-visibility: hidden;
+    }
+    
+    .box:hover .back{
+        transform: rotateX(0deg);
+        backface-visibility: hidden;
+    }  */
+}
 
